@@ -29,6 +29,10 @@ public class gameListFragment extends Fragment {
     Button button;
     NavController navController;
 
+    public gameListFragment() {
+        // Required empty public constructor
+    }
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -47,11 +51,11 @@ public class gameListFragment extends Fragment {
             public void onClick(View view) {
             //esto es lo necesario para cambiar entre fragments   navController.navigate(R.id.gameDetailFragment);
 
-             /*Esto es lo necesario para cambiar entre activitis
-                Intent intent = new Intent(getContext(), ActivityRandom.class);
+             //Esto es lo necesario para cambiar entre activitis
+                Intent intent = new Intent(requireContext(), ActivityCarrito.class);
 
                 // Iniciar la nueva actividad
-                startActivity(intent);*/
+                startActivity(intent);
             }
         });
 
