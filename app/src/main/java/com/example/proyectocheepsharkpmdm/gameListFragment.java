@@ -52,7 +52,7 @@ public class gameListFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        button = view.findViewById(R.id.btn_genre_action);
+        button = view.findViewById(R.id.btn_cart);
         navController = Navigation.findNavController(view);
 
         button.setOnClickListener(new View.OnClickListener() {

@@ -4,7 +4,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto"
 android:layout_width="match_parent"
 android:layout_height="match_parent">
-
+<!--
 <com.google.android.material.appbar.AppBarLayout
     android:id="@+id/appBarLayout"
     android:layout_width="match_parent"
@@ -61,13 +61,61 @@ android:layout_height="match_parent">
                     android:text="Acción"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
-                <!-- Add more buttons for genres -->
+
             </LinearLayout>
         </HorizontalScrollView>
     </androidx.appcompat.widget.Toolbar>
-</com.google.android.material.appbar.AppBarLayout>
+</com.google.android.material.appbar.AppBarLayout>-->
 
+    <!-- AppBarLayout con diseño mejorado -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
+        <!-- Toolbar personalizada -->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:title="Tienda"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+            <!-- LinearLayout para los botones -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <!-- Botón Random -->
+                <Button
+                    android:id="@+id/btn_random"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                android:text="Random"
+                android:background="?attr/selectableItemBackground"
+                android:textColor="@android:color/white"
+                android:paddingHorizontal="16dp"
+                android:layout_marginEnd="8dp" />
+
+                <!-- Botón Carrito -->
+                <Button
+                    android:id="@+id/btn_cart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                android:text="Carrito"
+                android:background="?attr/selectableItemBackground"
+                android:textColor="@android:color/white"
+                android:paddingHorizontal="16dp" />
+            </LinearLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <!-- RecyclerView para mostrar la lista de juegos -->
     <androidx.recyclerview.widget.RecyclerView
