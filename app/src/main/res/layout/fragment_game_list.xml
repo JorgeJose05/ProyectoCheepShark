@@ -18,27 +18,56 @@ android:layout_height="match_parent">
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" >
+
+
+        <HorizontalScrollView
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/design_default_color_primary">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/btn_genre_action"
+                    android:text="Acción"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <Button
+                    android:id="@+id/btn_genre_action2"
+                    android:text="Acción"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <Button
+                    android:id="@+id/btn_genre_action3"
+                    android:text="Acción"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <Button
+                    android:id="@+id/btn_genre_action22"
+                    android:text="Acción"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <Button
+                    android:id="@+id/btn_genre_action33"
+                    android:text="Acción"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <Button
+                    android:id="@+id/btn_genre_ac22tion"
+                    android:text="Acción"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <!-- Add more buttons for genres -->
+            </LinearLayout>
+        </HorizontalScrollView>
+    </androidx.appcompat.widget.Toolbar>
 </com.google.android.material.appbar.AppBarLayout>
 
-    <HorizontalScrollView
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white">
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <Button
-                android:id="@+id/btn_genre_action"
-                android:text="Acción"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <!-- Add more buttons for genres -->
-        </LinearLayout>
-    </HorizontalScrollView>
+
 
     <!-- RecyclerView para mostrar la lista de juegos -->
     <androidx.recyclerview.widget.RecyclerView
