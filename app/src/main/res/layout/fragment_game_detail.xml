@@ -149,28 +149,29 @@ por alguna razon algo me esta creando un margin encima del layout y tengo que ha
 
         <Button
             android:id="@+id/metacriticScorebutton"
-            android:layout_width="70dp"
-            android:layout_height="80dp"
-            android:layout_marginStart="244dp"
-            android:layout_marginTop="616dp"
-            android:textColor="@color/black"
-            android:clickable="false"
-            android:text=""
-            android:textStyle="bold"
-            android:textSize="20dp"
-            app:layout_constraintStart_toStartOf="@+id/constraint"
-            app:layout_constraintTop_toTopOf="@+id/constraint" />
+            android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="244dp"
+        android:layout_marginTop="616dp"
+        android:backgroundTint="@color/black"
+        android:clickable="false"
+        android:text=""
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="@+id/constraint"
+        app:layout_constraintTop_toTopOf="@+id/constraint" />
+
 
         <TextView
             android:id="@+id/metacriticScore"
             android:layout_width="wrap_content"
             android:layout_height="45dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="644dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="664dp"
             android:text="Valoracion de metacritic"
             app:layout_constraintStart_toStartOf="@+id/constraint"
             app:layout_constraintTop_toTopOf="@+id/constraint" />
-
 
         <TextView
             android:id="@+id/steamratingcount"
