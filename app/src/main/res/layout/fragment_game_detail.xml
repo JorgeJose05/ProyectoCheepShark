@@ -3,12 +3,254 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".GameDetailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!-- AppBarLayout con diseño mejorado -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <!-- Toolbar personalizada -->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:title=""
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+            <!-- LinearLayout para los botones -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <!-- Botón Random -->
+
+                <Button
+                    android:id="@+id/Tienda"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tienda"
+                    android:background="?attr/selectableItemBackground"
+                    android:textColor="@android:color/white"
+                    android:paddingHorizontal="16dp"
+                    android:layout_marginEnd="8dp" />
+                <Button
+                    android:id="@+id/btn_random"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Random"
+                    android:background="?attr/selectableItemBackground"
+                    android:textColor="@android:color/white"
+                    android:paddingHorizontal="16dp"
+                    android:layout_marginEnd="8dp" />
+
+                <!-- Botón Carrito -->
+                <Button
+                    android:id="@+id/btn_cart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Carrito"
+                    android:background="?attr/selectableItemBackground"
+                    android:textColor="@android:color/white"
+                    android:paddingHorizontal="16dp" />
+            </LinearLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+<!-- En el previsualizador se ve como este constraint layout se sale de su pantalla pero al ejecutar se ve toodo perfectamente dentro
+por alguna razon algo me esta creando un margin encima del layout y tengo que hacer esto-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint"
+        android:layout_width="match_parent"
+        android:layout_height="800dp"
+        android:layout_gravity="bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="380dp"
+            android:layout_height="71dp"
+            android:layout_marginTop="144dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_launcher_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/constraint"
+            app:layout_constraintTop_toTopOf="@+id/constraint" />
+
+        <TextView
+            android:id="@+id/tittle"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="220dp"
+            android:text="TextView"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="@+id/constraint"
+            app:layout_constraintTop_toTopOf="@+id/constraint" />
+
+        <LinearLayout
+            app:layout_constraintStart_toStartOf="@+id/constraint"
+            app:layout_constraintTop_toTopOf="@+id/constraint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:gravity="end"
+            android:layout_marginTop="300dp"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="24dp"
+                android:layout_marginTop="5dp"
+                android:layout_height="40dp"
+
+                android:src="@drawable/carritoicon" />
+
+            <TextView
+                android:id="@+id/salePrice"
+                android:layout_width="71dp"
+                android:layout_height="30dp"
+                android:text="TextView"
+                app:layout_constraintStart_toStartOf="@+id/constraint"
+                app:layout_constraintTop_toTopOf="@+id/constraint" />
+
+            <TextView
+                android:id="@+id/normalPrice"
+                android:layout_width="71dp"
+                android:layout_height="30dp"
+                android:text="TextView"
+                app:layout_constraintStart_toStartOf="@+id/constraint"
+                app:layout_constraintTop_toTopOf="@+id/constraint" />
+
+            <Button
+                android:id="@+id/comprar"
+                android:layout_width="wrap_content"
+                android:layout_height="44dp"
+                android:text="Comprar"
+                app:cornerRadius="0dp"
+                app:layout_constraintEnd_toEndOf="@+id/constraint"
+                app:layout_constraintStart_toStartOf="@+id/constraint"
+                app:layout_constraintTop_toTopOf="@+id/constraint" />
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/metacriticScorebutton"
+            android:layout_width="70dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="244dp"
+            android:layout_marginTop="616dp"
+            android:textColor="@color/black"
+            android:clickable="false"
+            android:text=""
+            android:textStyle="bold"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="@+id/constraint"
+            app:layout_constraintTop_toTopOf="@+id/constraint" />
+
+        <TextView
+            android:id="@+id/metacriticScore"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="644dp"
+            android:text="Valoracion de metacritic"
+            app:layout_constraintStart_toStartOf="@+id/constraint"
+            app:layout_constraintTop_toTopOf="@+id/constraint" />
+
+
+        <TextView
+            android:id="@+id/steamratingcount"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="716dp"
+            android:text="Numero de calificaciones:"
+            app:layout_constraintStart_toStartOf="@+id/constraint"
+            app:layout_constraintTop_toTopOf="@+id/constraint" />
+
+        <TextView
+            android:id="@+id/steamratingpercent"
+            android:layout_width="182dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="224dp"
+            android:layout_marginTop="716dp"
+            android:text="Porcentage de calificaciones positivas:"
+            app:layout_constraintStart_toStartOf="@+id/constraint"
+            app:layout_constraintTop_toTopOf="@+id/constraint" />
+
+        <TextView
+            android:id="@+id/TextFecha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="italic"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="270dp"
+            android:text="Fecha de lanzamiento"
+            app:layout_constraintStart_toStartOf="@+id/constraint"
+            app:layout_constraintTop_toTopOf="@+id/constraint" />
+
+        <TextView
+            android:id="@+id/fecha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="italic"
+
+            android:layout_marginStart="192dp"
+            android:layout_marginTop="270dp"
+            android:text="fecha"
+            app:layout_constraintStart_toStartOf="@+id/constraint"
+            app:layout_constraintTop_toTopOf="@+id/constraint" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="400dp"
+            android:text="Otros tratos"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            app:layout_constraintStart_toStartOf="@+id/constraint"
+            app:layout_constraintTop_toTopOf="@+id/constraint" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/otrostratos"
+            android:layout_width="match_parent"
+            android:layout_height="136dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="450dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/Valoraciones"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="606dp"
+            android:text="Valoraciones"
+            app:layout_constraintStart_toStartOf="@+id/constraint"
+            app:layout_constraintTop_toTopOf="@+id/constraint" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </FrameLayout>

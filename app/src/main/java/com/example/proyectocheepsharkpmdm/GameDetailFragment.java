@@ -1,64 +1,127 @@
 package com.example.proyectocheepsharkpmdm;
 
+import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link GameDetailFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.bumptech.glide.Glide;
+
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.Locale;
+
 public class GameDetailFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    Button tienda, carrito, metacriticScorebutton;
 
     public GameDetailFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment GameDetailFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static GameDetailFragment newInstance(String param1, String param2) {
-        GameDetailFragment fragment = new GameDetailFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        // Requiere un constructor vacío
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_game_detail, container, false);
+        // Infla el diseño del fragmento
+        // Infla el diseño del fragmento
+        View rootView = inflater.inflate(R.layout.fragment_game_detail, container, false);
+
+        metacriticScorebutton = rootView.findViewById(R.id.metacriticScorebutton);
+
+        tienda = rootView.findViewById(R.id.Tienda);
+        carrito = rootView.findViewById(R.id.btn_cart);
+
+        tienda.setOnClickListener(v -> {
+            // Cambiar entre fragments
+            //Quito esto porque sino cada vez que cambio de activity me lleva al fragment del navigation por defecto navController.navigate(R.id.gameDetailFragment);
+
+            // Cambiar entre actividades
+            Intent intent = new Intent(requireContext(), MainActivity.class);
+            startActivity(intent);
+        });
+        carrito.setOnClickListener(v -> {
+            // Cambiar entre fragments
+            //Quito esto porque sino cada vez que cambio de activity me lleva al fragment del navigation por defecto navController.navigate(R.id.gameDetailFragment);
+
+            // Cambiar entre actividades
+            Intent intent = new Intent(requireContext(), ActivityCarrito.class);
+            startActivity(intent);
+        });
+
+        // Obtener el Bundle con los datos
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            // Obtener los datos del Bundle
+            String title = bundle.getString("title");
+            String salePrice = bundle.getString("salePrice");
+            String normalPrice = bundle.getString("normalPrice");
+            String metacriticScore = bundle.getString("metacriticScore");
+            String steamRatingText = bundle.getString("steamRatingText");
+            String steamRatingCount = bundle.getString("steamRatingCount");
+            String dealRating = bundle.getString("dealRating");
+            String steamRatingPercent = bundle.getString("steamRatingPercent");
+            String thumb = bundle.getString("foto");
+            String fechasalida = bundle.getString("releaseDate");
+
+            // Obtener las vistas del XML
+            TextView titleTextView = rootView.findViewById(R.id.tittle);
+            TextView salePriceTextView = rootView.findViewById(R.id.salePrice);
+            TextView normalPriceTextView = rootView.findViewById(R.id.normalPrice);
+            TextView metacriticScoreTextView = rootView.findViewById(R.id.metacriticScorebutton);
+            TextView steamRatingCountTextView = rootView.findViewById(R.id.steamratingcount);
+            TextView steamRatingPercentTextView = rootView.findViewById(R.id.steamratingpercent);
+            ImageView thumbImageView = rootView.findViewById(R.id.imageView2);
+            TextView fecha = rootView.findViewById(R.id.fecha);
+
+            // Asignar los valores a las vistas
+            titleTextView.setText(title);
+            salePriceTextView.setText(salePrice+'€');
+            normalPriceTextView.setText(normalPrice+'€');
+            metacriticScoreTextView.setText(metacriticScore);
+            steamRatingCountTextView.setText("Numero de calificaciones:\n"+steamRatingCount);
+            steamRatingPercentTextView.setText("Porcentage de calificaciones positivas:\n"+steamRatingPercent);
+
+            // Si tienes un URL para la imagen (thumb), puedes cargarla con una librería como Glide o Picasso
+             Glide.with(this).load(thumb).into(thumbImageView);
+
+             //Asignar la fecha
+             long fechaENMillis = Integer.parseInt(fechasalida) * 1000L;
+
+
+            Date releaseDate = new Date(fechaENMillis);
+
+// Crear un formateador de fecha para mostrar la fecha en el formato que desees
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+            String formattedDate = sdf.format(releaseDate);
+
+            fecha.setText(formattedDate.toString());
+
+            //color de metacritic
+            if (Integer.parseInt(metacriticScore) <=50){
+                metacriticScorebutton.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#ff6874")));
+
+            }else if(Integer.parseInt(metacriticScore) <=70){
+
+                metacriticScorebutton.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#ffbd3f")));
+            }else{
+                metacriticScorebutton.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#00ce7a")));
+            }
+
+        }
+
+        return rootView;
     }
 }

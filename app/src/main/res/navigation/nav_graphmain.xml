@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/gameListFragment"
-        android:name="com.example.proyectocheepsharkpmdm.gameListFragment"
+        android:name="com.example.proyectocheepsharkpmdm.GameListFragment"
         android:label="fragment_game_list"
         tools:layout="@layout/fragment_game_list" >
 
