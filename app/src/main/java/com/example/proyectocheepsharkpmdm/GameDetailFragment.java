@@ -38,6 +38,7 @@ public class GameDetailFragment extends Fragment {
     Button tienda, carrito, metacriticScorebutton;
     ImageButton carritoButton;
     List<String> cartGameIds = new ArrayList<>();
+    Button random;
 
     public GameDetailFragment() {
         // Requiere un constructor vacío
@@ -54,6 +55,7 @@ public class GameDetailFragment extends Fragment {
 
         tienda = rootView.findViewById(R.id.Tienda);
         carrito = rootView.findViewById(R.id.btn_cart);
+        random = rootView.findViewById(R.id.btn_random);
 
         carritoButton = rootView.findViewById(R.id.carritoButton);
 

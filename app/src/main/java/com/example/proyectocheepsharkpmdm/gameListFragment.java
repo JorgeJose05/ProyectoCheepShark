@@ -95,7 +95,18 @@ public class GameListFragment extends Fragment {
 
                 // Crear un Bundle para pasar el ID del juego al siguiente fragmento
                 Bundle bundle = new Bundle();
-                bundle.putString("game_id", randomDeal.gameID);  // Pasa el ID del juego aleatorio
+                bundle.putString("releaseDate",randomDeal.releaseDate);
+                bundle.putString("title", randomDeal.title);
+                bundle.putString("salePrice", randomDeal.salePrice);
+                bundle.putString("normalPrice", randomDeal.normalPrice);
+                bundle.putString("steamRatingPercent",randomDeal.steamRatingPercent);
+                bundle.putString("metacriticScore", randomDeal.metacriticScore);
+                bundle.putString("steamRatingText", randomDeal.steamRatingText);
+                bundle.putString("steamRatingCount", randomDeal.steamRatingCount);
+                bundle.putString("dealRating", randomDeal.dealRating);
+                bundle.putString("steamAppID",randomDeal.steamAppID);
+                bundle.putString("foto", randomDeal.thumb);  // Pasa los datos que necesites
+                navController.navigate(R.id.gameDetailFragment, bundle);
 
                 // Navegar al fragmento de detalle con el Bundle
                 navController.navigate(R.id.gameDetailFragment, bundle);
