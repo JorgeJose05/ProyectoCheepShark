@@ -182,6 +182,24 @@ public class CartListFragment extends Fragment {
                     nojuegos.setVisibility(View.VISIBLE);  // Mostrar mensaje si el carrito está vacío
                 }
             });
+
+            holder.binding.getRoot().setOnClickListener(v -> {
+                // Navegar al siguiente fragmento con datos
+                Bundle bundle = new Bundle();
+                bundle.putString("releaseDate",deal.releaseDate);
+                bundle.putString("title", deal.title);
+                bundle.putString("salePrice", deal.salePrice);
+                bundle.putString("normalPrice", deal.normalPrice);
+                bundle.putString("steamRatingPercent",deal.steamRatingPercent);
+                bundle.putString("metacriticScore", deal.metacriticScore);
+                bundle.putString("steamRatingText", deal.steamRatingText);
+                bundle.putString("steamRatingCount", deal.steamRatingCount);
+                bundle.putString("dealRating", deal.dealRating);
+                bundle.putString("steamAppID",deal.steamAppID);
+                bundle.putString("foto", deal.thumb);  // Pasa los datos que necesites
+                navController.navigate(R.id.gameDetailFragment, bundle);
+            });
+
         }
 
         @Override
