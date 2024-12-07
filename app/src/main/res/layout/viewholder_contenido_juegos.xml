@@ -7,7 +7,7 @@
 
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    android:background="#FFFF00"
+    android:background="#5A1E99"
     android:padding="8dp">
 
     <ImageView
@@ -22,12 +22,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:gravity="center"
-        android:textColor="@android:color/black"
+        android:textColor="#F5F5F5"
         android:textSize="16sp"
         android:textStyle="bold" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:layout_marginTop="4dp"
+        android:background="#404040"
         android:layout_height="wrap_content">
 
         <ImageButton
@@ -58,7 +60,7 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="4dp"
                 android:gravity="center"
-                android:textColor="#808080"
+                android:textColor="#2ECC71"
                 android:textSize="16sp"
                 android:layout_marginEnd="10dp"
                 android:textStyle="bold" />
@@ -68,8 +70,8 @@
                 android:layout_marginEnd="4dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
+                android:textColor="#FFC107"
                 android:layout_marginBottom="4dp"
-                android:textColor="@android:color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
         </LinearLayout>

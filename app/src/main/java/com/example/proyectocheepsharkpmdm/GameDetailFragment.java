@@ -3,6 +3,7 @@ package com.example.proyectocheepsharkpmdm;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
@@ -38,7 +39,6 @@ public class GameDetailFragment extends Fragment {
     Button tienda, carrito, metacriticScorebutton;
     ImageButton carritoButton;
     List<String> cartGameIds = new ArrayList<>();
-    Button random;
 
     public GameDetailFragment() {
         // Requiere un constructor vacío
@@ -51,11 +51,11 @@ public class GameDetailFragment extends Fragment {
         // Infla el diseño del fragmento
         View rootView = inflater.inflate(R.layout.fragment_game_detail, container, false);
 
+
         metacriticScorebutton = rootView.findViewById(R.id.metacriticScorebutton);
 
         tienda = rootView.findViewById(R.id.Tienda);
         carrito = rootView.findViewById(R.id.btn_cart);
-        random = rootView.findViewById(R.id.btn_random);
 
         carritoButton = rootView.findViewById(R.id.carritoButton);
 
@@ -236,7 +236,14 @@ public class GameDetailFragment extends Fragment {
             metacriticScorebutton.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#ffbd3f")));
         } else {
             metacriticScorebutton.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#00ce7a")));
-        }}
+        }
+
+        // Configura el tachado en el texto
+        normalPriceTextView.setPaintFlags(normalPriceTextView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+
+
+
+    }
 
     // Método para leer los IDs desde el archivo Carrito.txt
     private void loadCartGameIds() {

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#1E1E1E"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".GameDetailFragment">
 
@@ -20,7 +21,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="#007BFF"
             app:title=""
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
@@ -96,7 +97,7 @@ por alguna razon algo me esta creando un margin encima del layout y tengo que ha
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="#d0d0d0"
+            android:background="#2B2B2B"
             app:layout_constraintStart_toStartOf="@+id/constraint"
             app:layout_constraintTop_toTopOf="@+id/constraint"
             android:layout_marginStart="30dp"
@@ -131,6 +132,7 @@ por alguna razon algo me esta creando un margin encima del layout y tengo que ha
                     android:id="@+id/salePrice"
                     android:layout_width="71dp"
                     android:layout_height="30dp"
+                    android:textColor="#FFC107"
                     android:text="TextView"
                     app:layout_constraintStart_toStartOf="@+id/constraint"
                     app:layout_constraintTop_toTopOf="@+id/constraint" />
@@ -139,6 +141,7 @@ por alguna razon algo me esta creando un margin encima del layout y tengo que ha
                     android:id="@+id/normalPrice"
                     android:layout_width="71dp"
                     android:layout_height="30dp"
+                    android:textColor="#2ECC71"
                     android:text="TextView"
                     app:layout_constraintStart_toStartOf="@+id/constraint"
                     app:layout_constraintTop_toTopOf="@+id/constraint" />
@@ -148,6 +151,7 @@ por alguna razon algo me esta creando un margin encima del layout y tengo que ha
                     android:layout_width="wrap_content"
                     android:layout_height="44dp"
                     android:text="Comprar"
+                    android:backgroundTint="#007BFF"
                     app:cornerRadius="0dp"
                     app:layout_constraintEnd_toEndOf="@+id/constraint"
                     app:layout_constraintStart_toStartOf="@+id/constraint"

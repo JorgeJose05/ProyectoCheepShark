@@ -1,6 +1,7 @@
 package com.example.proyectocheepsharkpmdm;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -162,6 +163,9 @@ public class CartListFragment extends Fragment {
             holder.binding.PrOriginal.setText(deal.normalPrice+'€');
             holder.binding.PrDesc.setText(deal.salePrice+'€');
             Glide.with(requireActivity()).load(deal.thumb).into(holder.binding.foto);
+
+
+            holder.binding.PrOriginal.setPaintFlags(holder.binding.PrOriginal.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
 
             // Acción de eliminar juego del carrito
             holder.binding.carritoButtonC.setOnClickListener(v -> {
