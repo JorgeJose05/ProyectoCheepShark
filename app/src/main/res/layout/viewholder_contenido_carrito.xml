@@ -31,17 +31,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <Button
+
+
+        <ImageButton
+            android:id="@+id/carritoButtonC"
             android:layout_width="50dp"
             android:layout_height="40dp"
-            android:text="Carrito"
-            android:id="@+id/carritoButton"
-            android:backgroundTint="#ff0000"
+            android:background="#ff0000"
+            android:tag=""
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
+            android:src="@drawable/carrito" />
 
-            app:cornerRadius="0dp" />
 
         <LinearLayout
             android:layout_width="wrap_content"

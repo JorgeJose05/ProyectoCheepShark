@@ -35,11 +35,11 @@
             android:layout_width="50dp"
             android:layout_height="40dp"
             android:background="#00ff00"
+            android:src="@drawable/carrito"
             android:tag=""
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:src="@drawable/carrito" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
             android:layout_width="wrap_content"
