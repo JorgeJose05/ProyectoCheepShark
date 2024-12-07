@@ -102,7 +102,10 @@ public class GameDetailFragment extends Fragment {
             String dealRating = bundle.getString("dealRating");
             String steamRatingPercent = bundle.getString("steamRatingPercent");
             String thumb = bundle.getString("foto");
+            String steamAppID = bundle.getString("steamAppID");
             String fechasalida = bundle.getString("releaseDate");
+
+            Log.e("id steam",steamAppID);
 
             // Obtener las vistas del XML
             TextView titleTextView = rootView.findViewById(R.id.tittle);

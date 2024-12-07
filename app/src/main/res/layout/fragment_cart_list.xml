@@ -20,13 +20,18 @@ android:layout_height="match_parent">
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:title="Carrito de compras"/>
+        app:title="Carrito de compras"
+        >
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Button" />
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            app:cornerRadius="0dp"
+            android:text="Tienda" />
+    </androidx.appcompat.widget.Toolbar>
+
 </com.google.android.material.appbar.AppBarLayout>
 
 <!-- RecyclerView para mostrar los juegos en el carrito -->

@@ -21,6 +21,7 @@ import android.widget.Button;
 import com.bumptech.glide.Glide;
 import com.example.proyectocheepsharkpmdm.databinding.ViewholderContenidoCarritoBinding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CartListFragment extends Fragment {
@@ -28,6 +29,7 @@ public class CartListFragment extends Fragment {
     Button button;
     NavController navController;
 
+    List<String> cartGameIds = new ArrayList<>();
     public CartListFragment() {
         // Required empty public constructor
     }
@@ -41,6 +43,8 @@ public class CartListFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        cartGameIds.add("1"); // Agrega los IDs de los juegos en el carrito
+        cartGameIds.add("3064750");
 
         button = view.findViewById(R.id.button);
         navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
@@ -63,8 +67,18 @@ public class CartListFragment extends Fragment {
         viewModel.getDealsLiveData().observe(getViewLifecycleOwner(), new Observer<List<CheapShark.Deal>>() {
             @Override
             public void onChanged(List<CheapShark.Deal> deals) {
+
+                List<CheapShark.Deal> filteredDeals = new ArrayList<>();
+
+                // Filtrar las ofertas por ID, para mostrar solo las que están en el carrito
+                for (CheapShark.Deal deal : deals) {
+                    if (cartGameIds.contains(deal.steamAppID)) {
+                        filteredDeals.add(deal);
+                    }
+                }
+
                 // Aquí filtras o ajustas la lista para mostrar solo los elementos del carrito
-                dealsAdapter.setDealsList(deals);
+                dealsAdapter.setDealsList(filteredDeals);
             }
         });
 
@@ -95,7 +109,8 @@ public class CartListFragment extends Fragment {
             CheapShark.Deal deal = dealsList.get(position);
 
             holder.binding.title.setText(deal.title);
-            holder.binding.artist.setText("Sale Price: $" + deal.salePrice);
+            holder.binding.PrOriginal.setText(deal.normalPrice+'€');
+            holder.binding.PrDesc.setText(deal.salePrice+'€');
             Glide.with(requireActivity()).load(deal.thumb).into(holder.binding.foto);
         }
 

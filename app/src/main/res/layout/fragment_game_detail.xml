@@ -123,6 +123,7 @@ por alguna razon algo me esta creando un margin encima del layout y tengo que ha
                     android:layout_height="40dp"
                     android:layout_marginTop="5dp"
                     android:background="#00ff00"
+                    android:tag=""
                     android:src="@drawable/carrito" />
             </LinearLayout>
 
@@ -167,7 +168,7 @@ por alguna razon algo me esta creando un margin encima del layout y tengo que ha
             android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="244dp"
-        android:layout_marginTop="616dp"
+        android:layout_marginTop="516dp"
         android:backgroundTint="@color/black"
         android:clickable="false"
         android:text=""
@@ -183,7 +184,7 @@ por alguna razon algo me esta creando un margin encima del layout y tengo que ha
             android:layout_width="wrap_content"
             android:layout_height="45dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="664dp"
+            android:layout_marginTop="564dp"
             android:text="Valoracion de metacritic"
             app:layout_constraintStart_toStartOf="@+id/constraint"
             app:layout_constraintTop_toTopOf="@+id/constraint" />
@@ -193,7 +194,7 @@ por alguna razon algo me esta creando un margin encima del layout y tengo que ha
             android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="716dp"
+            android:layout_marginTop="696dp"
             android:text="Numero de calificaciones:"
             app:layout_constraintStart_toStartOf="@+id/constraint"
             app:layout_constraintTop_toTopOf="@+id/constraint" />
@@ -203,7 +204,7 @@ por alguna razon algo me esta creando un margin encima del layout y tengo que ha
             android:layout_width="182dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="224dp"
-            android:layout_marginTop="716dp"
+            android:layout_marginTop="696dp"
             android:text="Porcentage de calificaciones positivas:"
             app:layout_constraintStart_toStartOf="@+id/constraint"
             app:layout_constraintTop_toTopOf="@+id/constraint" />
@@ -243,6 +244,7 @@ por alguna razon algo me esta creando un margin encima del layout y tengo que ha
             app:layout_constraintStart_toStartOf="@+id/constraint"
             app:layout_constraintTop_toTopOf="@+id/constraint" />
 
+        <!--
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/otrostratos"
             android:layout_width="match_parent"
@@ -251,7 +253,7 @@ por alguna razon algo me esta creando un margin encima del layout y tengo que ha
             android:layout_marginTop="450dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"/>-->
 
         <TextView
             android:id="@+id/Valoraciones"
@@ -260,8 +262,19 @@ por alguna razon algo me esta creando un margin encima del layout y tengo que ha
             android:textStyle="bold"
             android:textSize="20dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="606dp"
+            android:layout_marginTop="506dp"
             android:text="Valoraciones"
+            app:layout_constraintStart_toStartOf="@+id/constraint"
+            app:layout_constraintTop_toTopOf="@+id/constraint" />
+        <TextView
+            android:id="@+id/ValoracionesSteam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="646dp"
+            android:text="Valoraciones de Steam"
             app:layout_constraintStart_toStartOf="@+id/constraint"
             app:layout_constraintTop_toTopOf="@+id/constraint" />
 
