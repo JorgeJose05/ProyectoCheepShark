@@ -3,6 +3,7 @@ package com.example.proyectocheepsharkpmdm;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,6 +29,7 @@ import java.util.Locale;
 
 public class GameDetailFragment extends Fragment {
     Button tienda, carrito, metacriticScorebutton;
+    ImageButton carritoButton;
 
     public GameDetailFragment() {
         // Requiere un constructor vacío
@@ -43,6 +46,31 @@ public class GameDetailFragment extends Fragment {
 
         tienda = rootView.findViewById(R.id.Tienda);
         carrito = rootView.findViewById(R.id.btn_cart);
+
+        carritoButton = rootView.findViewById(R.id.carritoButton);
+
+        if (carritoButton.getTag().equals("")){
+            carritoButton.setBackgroundColor(Color.parseColor("#00FF00"));
+            carritoButton.setTag("true");
+        }else if( carritoButton.getTag().equals("true") ){
+            carritoButton.setBackgroundColor(Color.parseColor("#00FF00"));
+        }else{
+            carritoButton.setBackgroundColor(Color.parseColor("#FF0000"));
+            carritoButton.setTag("false");
+        }
+
+        carritoButton.setOnClickListener(v -> {
+            if (carritoButton.getTag().equals("")){
+                carritoButton.setBackgroundColor(Color.parseColor("#FF0000"));
+                carritoButton.setTag("false");
+            }else if( carritoButton.getTag().equals("true") ){
+                carritoButton.setBackgroundColor(Color.parseColor("#FF0000"));
+                carritoButton.setTag("false");
+            }else{
+                carritoButton.setBackgroundColor(Color.parseColor("#00FF00"));
+                carritoButton.setTag("true");
+            }
+        });
 
         tienda.setOnClickListener(v -> {
             // Cambiar entre fragments

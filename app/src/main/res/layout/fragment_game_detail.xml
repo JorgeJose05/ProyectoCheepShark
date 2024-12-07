@@ -99,53 +99,68 @@ por alguna razon algo me esta creando un margin encima del layout y tengo que ha
             app:layout_constraintStart_toStartOf="@+id/constraint"
             app:layout_constraintTop_toTopOf="@+id/constraint" />
 
+
         <LinearLayout
-            app:layout_constraintStart_toStartOf="@+id/constraint"
-            app:layout_constraintTop_toTopOf="@+id/constraint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#d0d0d0"
+            app:layout_constraintStart_toStartOf="@+id/constraint"
+            app:layout_constraintTop_toTopOf="@+id/constraint"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
-            android:gravity="end"
-            android:layout_marginTop="300dp"
-            android:orientation="horizontal">
+            android:layout_marginTop="300dp">
 
-            <ImageButton
-                android:id="@+id/imageButton"
-                android:layout_width="24dp"
-                android:layout_marginTop="5dp"
-                android:layout_height="40dp"
-
-                android:src="@drawable/carritoicon" />
-
-            <TextView
-                android:id="@+id/salePrice"
-                android:layout_width="71dp"
-                android:layout_height="30dp"
-                android:text="TextView"
-                app:layout_constraintStart_toStartOf="@+id/constraint"
-                app:layout_constraintTop_toTopOf="@+id/constraint" />
-
-            <TextView
-                android:id="@+id/normalPrice"
-                android:layout_width="71dp"
-                android:layout_height="30dp"
-                android:text="TextView"
-                app:layout_constraintStart_toStartOf="@+id/constraint"
-                app:layout_constraintTop_toTopOf="@+id/constraint" />
-
-            <Button
-                android:id="@+id/comprar"
+            <!-- ImageButton en su propio LinearLayout -->
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="44dp"
-                android:text="Comprar"
-                app:cornerRadius="0dp"
-                app:layout_constraintEnd_toEndOf="@+id/constraint"
-                app:layout_constraintStart_toStartOf="@+id/constraint"
-                app:layout_constraintTop_toTopOf="@+id/constraint" />
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
+                <ImageButton
+                    android:id="@+id/carritoButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#00ff00"
+                    android:src="@drawable/carrito" />
+            </LinearLayout>
+
+            <!-- Contenido original -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="end">
+
+                <TextView
+                    android:id="@+id/salePrice"
+                    android:layout_width="71dp"
+                    android:layout_height="30dp"
+                    android:text="TextView"
+                    app:layout_constraintStart_toStartOf="@+id/constraint"
+                    app:layout_constraintTop_toTopOf="@+id/constraint" />
+
+                <TextView
+                    android:id="@+id/normalPrice"
+                    android:layout_width="71dp"
+                    android:layout_height="30dp"
+                    android:text="TextView"
+                    app:layout_constraintStart_toStartOf="@+id/constraint"
+                    app:layout_constraintTop_toTopOf="@+id/constraint" />
+
+                <Button
+                    android:id="@+id/comprar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="44dp"
+                    android:text="Comprar"
+                    app:cornerRadius="0dp"
+                    app:layout_constraintEnd_toEndOf="@+id/constraint"
+                    app:layout_constraintStart_toStartOf="@+id/constraint"
+                    app:layout_constraintTop_toTopOf="@+id/constraint" />
+            </LinearLayout>
         </LinearLayout>
-
 
         <Button
             android:id="@+id/metacriticScorebutton"
