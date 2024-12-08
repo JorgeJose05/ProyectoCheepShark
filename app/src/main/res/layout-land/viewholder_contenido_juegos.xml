@@ -13,6 +13,7 @@
     <ImageView
         android:id="@+id/foto"
         android:layout_width="190dp"
+        android:layout_gravity="center"
         android:layout_height="71dp"
         android:scaleType="centerCrop" />
 
