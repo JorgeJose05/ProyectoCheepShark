@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1E1E1E"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".GameDetailFragment">
+
+    <!-- AppBarLayout con diseño mejorado -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <!-- Toolbar personalizada -->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#007BFF"
+            app:title=""
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+            <!-- LinearLayout para los botones -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <!-- Botón Random -->
+
+                <Button
+                    android:id="@+id/Tienda"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tienda"
+                    android:background="?attr/selectableItemBackground"
+                    android:textColor="@android:color/white"
+                    android:paddingHorizontal="16dp"
+                    android:layout_marginEnd="8dp" />
+
+
+                <!-- Botón Carrito -->
+                <Button
+                    android:id="@+id/btn_cart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Carrito"
+                    android:background="?attr/selectableItemBackground"
+                    android:textColor="@android:color/white"
+                    android:paddingHorizontal="16dp" />
+            </LinearLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+<!-- En el previsualizador se ve como este constraint layout se sale de su pantalla pero al ejecutar se ve toodo perfectamente dentro
+por alguna razon algo me esta creando un margin encima del layout y tengo que hacer esto-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:layout_marginTop="?attr/actionBarSize">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint"
+        android:layout_width="match_parent"
+        android:layout_height="800dp"
+        android:layout_gravity="top"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="380dp"
+            android:layout_height="71dp"
+            android:layout_marginTop="144dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_launcher_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/constraint"
+            app:layout_constraintTop_toTopOf="@+id/constraint" />
+
+        <TextView
+            android:id="@+id/tittle"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="220dp"
+            android:text="TextView"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="@+id/constraint"
+            app:layout_constraintTop_toTopOf="@+id/constraint" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#2B2B2B"
+            app:layout_constraintStart_toStartOf="@+id/constraint"
+            app:layout_constraintTop_toTopOf="@+id/constraint"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginTop="300dp">
+
+            <!-- ImageButton en su propio LinearLayout -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/carritoButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#00ff00"
+                    android:tag=""
+                    android:src="@drawable/carrito" />
+            </LinearLayout>
+
+            <!-- Contenido original -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="end">
+
+                <TextView
+                    android:id="@+id/salePrice"
+                    android:layout_width="71dp"
+                    android:layout_height="30dp"
+                    android:textColor="#FFC107"
+                    android:text="TextView"
+                    app:layout_constraintStart_toStartOf="@+id/constraint"
+                    app:layout_constraintTop_toTopOf="@+id/constraint" />
+
+                <TextView
+                    android:id="@+id/normalPrice"
+                    android:layout_width="71dp"
+                    android:layout_height="30dp"
+                    android:textColor="#2ECC71"
+                    android:text="TextView"
+                    app:layout_constraintStart_toStartOf="@+id/constraint"
+                    app:layout_constraintTop_toTopOf="@+id/constraint" />
+
+                <Button
+                    android:id="@+id/comprar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="44dp"
+                    android:text="Comprar"
+                    android:backgroundTint="#007BFF"
+                    app:cornerRadius="0dp"
+                    app:layout_constraintEnd_toEndOf="@+id/constraint"
+                    app:layout_constraintStart_toStartOf="@+id/constraint"
+                    app:layout_constraintTop_toTopOf="@+id/constraint" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/metacriticScorebutton"
+            android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="244dp"
+        android:layout_marginTop="516dp"
+        android:backgroundTint="@color/black"
+        android:clickable="false"
+        android:text=""
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="@+id/constraint"
+        app:layout_constraintTop_toTopOf="@+id/constraint" />
+
+
+        <TextView
+            android:id="@+id/metacriticScore"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="564dp"
+            android:textColor="#FFFFFF"
+            android:text="Valoracion de metacritic"
+            app:layout_constraintStart_toStartOf="@+id/constraint"
+            app:layout_constraintTop_toTopOf="@+id/constraint" />
+
+        <TextView
+            android:id="@+id/steamratingcount"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="696dp"
+            android:text="Numero de calificaciones:"
+            app:layout_constraintStart_toStartOf="@+id/constraint"
+            app:layout_constraintTop_toTopOf="@+id/constraint" />
+
+        <TextView
+            android:id="@+id/steamratingpercent"
+            android:layout_width="182dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="224dp"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="696dp"
+            android:text="Porcentage de calificaciones positivas:"
+            app:layout_constraintStart_toStartOf="@+id/constraint"
+            app:layout_constraintTop_toTopOf="@+id/constraint" />
+
+        <TextView
+            android:id="@+id/TextFecha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="italic"
+            android:textColor="#FFFFFF"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="270dp"
+            android:text="Fecha de lanzamiento"
+            app:layout_constraintStart_toStartOf="@+id/constraint"
+            app:layout_constraintTop_toTopOf="@+id/constraint" />
+
+        <TextView
+            android:id="@+id/fecha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="italic"
+            android:textColor="#FFFFFF"
+            android:layout_marginStart="192dp"
+            android:layout_marginTop="270dp"
+            android:text="fecha"
+            app:layout_constraintStart_toStartOf="@+id/constraint"
+            app:layout_constraintTop_toTopOf="@+id/constraint" />
+
+
+        <!--
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/otrostratos"
+            android:layout_width="match_parent"
+            android:layout_height="136dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="450dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>-->
+
+        <TextView
+            android:id="@+id/Valoraciones"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="#FFFFFF"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="506dp"
+            android:text="Valoraciones"
+            app:layout_constraintStart_toStartOf="@+id/constraint"
+            app:layout_constraintTop_toTopOf="@+id/constraint" />
+        <TextView
+            android:id="@+id/ValoracionesSteam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="646dp"
+            android:textColor="#FFFFFF"
+            android:text="Valoraciones de Steam"
+            app:layout_constraintStart_toStartOf="@+id/constraint"
+            app:layout_constraintTop_toTopOf="@+id/constraint" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
+
+</FrameLayout>
