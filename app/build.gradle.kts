@@ -44,6 +44,11 @@ dependencies {
     implementation ("androidx.navigation:navigation-ui:2.3.0")
 
     implementation("com.github.bumptech.glide:glide:4.11.0")
+    implementation(fileTree(mapOf(
+        "dir" to "C:\\Users\\Usuario\\AppData\\Local\\Android\\Sdk\\platforms\\android-34",
+        "include" to listOf("*.aar", "*.jar"),
+        "exclude" to listOf("")
+    )))
     annotationProcessor("com.github.bumptech.glide:compiler:4.11.0")
 
     implementation(libs.appcompat)

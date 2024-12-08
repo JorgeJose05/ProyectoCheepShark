@@ -34,6 +34,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * La clase del fragmento que contiene la lista de juegos de la tienda
+ *
+ * @author Jorge Jose Dumitrache Chust
+ * @version 1.0
+ *
+ *
+ */
 public class GameListFragment extends Fragment {
 
     Button random;
@@ -43,10 +51,27 @@ public class GameListFragment extends Fragment {
     List<CheapShark.Deal> dealsList;  // Lista de juegos de la API
     List<Integer> Carrito;
     File carritofile;
+
+    /**
+     * Constructor por defecto de la clase
+     */
     public GameListFragment() {
         // Required empty public constructor
     }
 
+
+    /**
+     *
+     * @param inflater The LayoutInflater object that can be used to inflate
+     * any views in the fragment,
+     * @param container If non-null, this is the parent view that the fragment's
+     * UI should be attached to.  The fragment should not add the view itself,
+     * but this can be used to generate the LayoutParams of the view.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed
+     * from a previous saved state as given here.
+     *
+     * @return devuelve la view del fragmento
+     */
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -54,6 +79,12 @@ public class GameListFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_game_list, container, false);
     }
 
+    /**
+     *
+     * @param view The View returned by {@link #onCreateView(LayoutInflater, ViewGroup, Bundle)}.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed
+     * from a previous saved state as given here.
+     */
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -137,12 +168,20 @@ public class GameListFragment extends Fragment {
         });
 
         // Realizar la solicitud
-        cheapSharkViewModel.fetchDeals("1", "15");
+        cheapSharkViewModel.fetchDeals("1", "150");
     }
 
+    /**La clase del viewholder de los deals
+     *
+     *
+     */
     static class DealViewHolder extends RecyclerView.ViewHolder {
         ViewholderContenidoJuegosBinding binding;
 
+        /**El constructor del DealViewHolder
+         *
+         * @param binding
+         */
         public DealViewHolder(@NonNull ViewholderContenidoJuegosBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
@@ -150,22 +189,44 @@ public class GameListFragment extends Fragment {
     }
 
     // Adaptador para el RecyclerView
+
+    /**El adaptador que coge la lista e inserta los datos en el viewholder segun la
+     * posicion del deal en la lista
+     *
+     */
     class DealsAdapter extends RecyclerView.Adapter<DealViewHolder> {
         List<CheapShark.Deal> dealsList;
 
+        /**
+         * El metodo que devuelve el viewholder inflado con el inflate
+         *
+         * @param parent The ViewGroup into which the new View will be added after it is bound to
+         *               an adapter position.
+         * @param viewType The view type of the new View.
+         *
+         * @return devuelve el viewholder de deal ya rellenado con el inflater
+         */
         @NonNull
         @Override
         public DealViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             return new DealViewHolder(ViewholderContenidoJuegosBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
         }
 
+        /**
+         * El metodo que rellena los view holders con la informacion de la
+         * lista segun la posicion del objeto deal en la lista
+         *
+         * @param holder The ViewHolder which should be updated to represent the contents of the
+         *        item at the given position in the data set.
+         * @param position The position of the item within the adapter's data set.
+         */
         @Override
         public void onBindViewHolder(@NonNull DealViewHolder holder, int position) {
             CheapShark.Deal deal = dealsList.get(position);
 
             holder.binding.title.setText(deal.title);
-            holder.binding.PrOriginal.setText(deal.normalPrice+'€');
-            holder.binding.PrDesc.setText(deal.salePrice+'€');
+            holder.binding.PrOriginal.setText((String.format("%s€", deal.normalPrice)));
+            holder.binding.PrDesc.setText((String.format("%s€", deal.salePrice)));
             // Asegúrate de que steamAppID no sea null ni vacío antes de intentar convertirlo
             if (deal.steamAppID != null && !deal.steamAppID.isEmpty()) {
                 if(Carrito.contains(Integer.parseInt(deal.steamAppID))){
@@ -240,6 +301,11 @@ public class GameListFragment extends Fragment {
 
         }
 
+        /**El metodo que añade el steamappid del deal del juego al archivo con los tratos en el carrito
+         *
+         * @param file
+         * @param steamAppID
+         */
         private void addSteamAppIDToFile(File file, String steamAppID) {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {
                 writer.write(steamAppID + "\n");  // Agregar el ID al archivo
@@ -248,6 +314,12 @@ public class GameListFragment extends Fragment {
                 Log.e("Archivo", "Error al escribir en el archivo", e);
             }
         }
+
+        /**
+         * El metodo que elimina un id de la lista del carrito que esta guardada en un archivo
+         * @param file
+         * @param steamAppID
+         */
         private void removeSteamAppIDFromFile(File file, String steamAppID) {
             try {
                 // Leer todas las líneas del archivo
@@ -269,12 +341,19 @@ public class GameListFragment extends Fragment {
             }
         }
 
-
+        /**
+         * EL metodo que devuelve el tamaño de la lista de juegos
+         * @return
+         */
         @Override
         public int getItemCount() {
             return dealsList == null ? 0 : dealsList.size();
         }
 
+        /**
+         * El metodo que inicializa la deal list con la de la api
+         * @param dealsList
+         */
         void setDealsList(List<CheapShark.Deal> dealsList) {
             this.dealsList = dealsList;
             notifyDataSetChanged();

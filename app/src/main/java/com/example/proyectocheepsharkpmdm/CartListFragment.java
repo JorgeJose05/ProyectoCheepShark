@@ -32,6 +32,14 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * La activity del fragmento que contiene la lista de juegos que hay en el carrito de
+ * compras
+ *
+ * @author Jorge Jose Dumitrache Chust
+ * @version 1.0
+ *
+ */
 public class CartListFragment extends Fragment {
 
     Button button;
@@ -41,6 +49,9 @@ public class CartListFragment extends Fragment {
 
     ImageButton carritoButton;
 
+    /**
+     * El constructor por defecto de la clase
+     */
     public CartListFragment() {
         // Required empty public constructor
     }
@@ -107,6 +118,9 @@ public class CartListFragment extends Fragment {
         viewModel.fetchDeals("1", "15");
     }
     // Método para leer los IDs desde el archivo Carrito.txt
+    /**
+     * Carga la variable de lista de juegos con la lista de juegos que hay en el archivo local
+     */
     private void loadCartGameIds() {
         try {
             // Leer todas las líneas del archivo
@@ -121,10 +135,15 @@ public class CartListFragment extends Fragment {
             }
         } catch (IOException e) {
             e.printStackTrace(); // Manejo de errores si no se puede leer el archivo
+        }catch (NullPointerException npe){
+            npe.printStackTrace();
         }
     }
 
     // Método para guardar los IDs actualizados en el archivo Carrito.txt
+    /**
+     * El metodo que guarda los id's de la lista que tiene la clase en el archivo local
+     */
     private void saveCartGameIds() {
         try {
             FileOutputStream fos = new FileOutputStream(new File(getContext().getFilesDir(), "Carrito.txt"));
@@ -137,31 +156,64 @@ public class CartListFragment extends Fragment {
         }
     }
 
+    /**La clase del viewholder de los deals
+     *
+     *
+     */
     static class DealViewHolder extends RecyclerView.ViewHolder {
         ViewholderContenidoCarritoBinding binding;
 
+        /**El constructor del DealViewHolder
+         *
+         * @param binding
+         */
         public DealViewHolder(@NonNull ViewholderContenidoCarritoBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
     }
 
+    // Adaptador para el RecyclerView
+
+    /**El adaptador que coge la lista e inserta los datos en el viewholder segun la
+     * posicion del deal en la lista
+     *
+     */
     class DealsAdapter extends RecyclerView.Adapter<DealViewHolder> {
         List<CheapShark.Deal> dealsList;
 
+        /**
+         *
+         * El metodo que devuelve el viewholder inflado con el inflate
+         *
+         * @param parent The ViewGroup into which the new View will be added after it is bound to
+         *               an adapter position.
+         * @param viewType The view type of the new View.
+         *
+         * @return
+         */
         @NonNull
         @Override
         public DealViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             return new DealViewHolder(ViewholderContenidoCarritoBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
         }
 
+        /**
+         *
+         * El metodo que rellena los view holders con la informacion de la
+         * lista segun la posicion del objeto deal en la lista
+         *
+         * @param holder The ViewHolder which should be updated to represent the contents of the
+         *        item at the given position in the data set.
+         * @param position The position of the item within the adapter's data set.
+         */
         @Override
         public void onBindViewHolder(@NonNull DealViewHolder holder, int position) {
             CheapShark.Deal deal = dealsList.get(position);
 
             holder.binding.title.setText(deal.title);
-            holder.binding.PrOriginal.setText(deal.normalPrice+'€');
-            holder.binding.PrDesc.setText(deal.salePrice+'€');
+            holder.binding.PrOriginal.setText((String.format("%s€", deal.normalPrice)));
+            holder.binding.PrDesc.setText((String.format("%s€", deal.salePrice)));
             Glide.with(requireActivity()).load(deal.thumb).into(holder.binding.foto);
 
 
@@ -206,11 +258,18 @@ public class CartListFragment extends Fragment {
 
         }
 
+        /**
+         * EL metodo que devuelve el tamaño de la lista de juegos
+         * @return devuelve el tamaño de la lista
+         */
         @Override
         public int getItemCount() {
             return dealsList == null ? 0 : dealsList.size();
         }
 
+        /**
+         * El metodo que inicializa la deal list con la de la api
+         */
         void setDealsList(List<CheapShark.Deal> dealsList) {
             this.dealsList = dealsList;
             notifyDataSetChanged();

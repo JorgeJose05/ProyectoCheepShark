@@ -35,15 +35,38 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+/**
+ * La clase del fragment que representa los datos a detalle de un juego con la opcion de comprary de añadir
+ * al carrito
+ *
+ * @author Jorge Jose Dumitrache Chust
+ * @version 1.0
+ *
+ */
 public class GameDetailFragment extends Fragment {
     Button tienda, carrito, metacriticScorebutton;
     ImageButton carritoButton;
     List<String> cartGameIds = new ArrayList<>();
 
+    /**
+     * El constructor por defecto de la clase
+     */
     public GameDetailFragment() {
         // Requiere un constructor vacío
     }
 
+    /**
+     *
+     * @param inflater The LayoutInflater object that can be used to inflate
+     * any views in the fragment,
+     * @param container If non-null, this is the parent view that the fragment's
+     * UI should be attached to.  The fragment should not add the view itself,
+     * but this can be used to generate the LayoutParams of the view.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed
+     * from a previous saved state as given here.
+     *
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -107,7 +130,8 @@ public class GameDetailFragment extends Fragment {
             String steamAppID = bundle.getString("steamAppID");
             String fechasalida = bundle.getString("releaseDate");
 
-            Log.e("id steam",steamAppID);
+
+
 
             // Obtener las vistas del XML
             TextView titleTextView = rootView.findViewById(R.id.tittle);
@@ -121,8 +145,8 @@ public class GameDetailFragment extends Fragment {
 
             // Asignar los valores a las vistas
             titleTextView.setText(title);
-            salePriceTextView.setText(salePrice+'€');
-            normalPriceTextView.setText(normalPrice+'€');
+            salePriceTextView.setText((String.format("%s€", salePrice)));
+            normalPriceTextView.setText((String.format("%s€", normalPrice)));
             metacriticScoreTextView.setText(metacriticScore);
             steamRatingCountTextView.setText("Numero de calificaciones:\n"+steamRatingCount);
             steamRatingPercentTextView.setText("Porcentage de calificaciones positivas:\n"+steamRatingPercent);
@@ -190,7 +214,13 @@ public class GameDetailFragment extends Fragment {
     }
 
 
-
+    /**
+     * El metodo para obtener los datos del juego que se le han pasado atraves del bundle del fragment anterior
+     *
+     *
+     * @param rootView
+     * @param bundle
+     */
     private void loadGameDetails(View rootView, Bundle bundle) {
         // Aquí cargarás los detalles del juego (como lo haces en tu código original)
         String title = bundle.getString("title");
@@ -214,8 +244,8 @@ public class GameDetailFragment extends Fragment {
         TextView fecha = rootView.findViewById(R.id.fecha);
 
         titleTextView.setText(title);
-        salePriceTextView.setText(salePrice + '€');
-        normalPriceTextView.setText(normalPrice + '€');
+        salePriceTextView.setText((String.format("%s€", salePrice)));
+        normalPriceTextView.setText((String.format("%s€", normalPrice)));
         metacriticScoreTextView.setText(metacriticScore);
         steamRatingCountTextView.setText("Número de calificaciones:\n" + steamRatingCount);
         steamRatingPercentTextView.setText("Porcentaje de calificaciones positivas:\n" + steamRatingPercent);
@@ -246,6 +276,10 @@ public class GameDetailFragment extends Fragment {
     }
 
     // Método para leer los IDs desde el archivo Carrito.txt
+
+    /**
+     * Carga la variable de lista de juegos con la lista de juegos que hay en el archivo local
+     */
     private void loadCartGameIds() {
         try {
             // Leer todas las líneas del archivo
@@ -264,6 +298,10 @@ public class GameDetailFragment extends Fragment {
     }
 
     // Método para guardar los IDs actualizados en el archivo Carrito.txt
+
+    /**
+     * El metodo que guarda los id's de la lista que tiene la clase en el archivo local
+     */
     private void saveCartGameIds() {
         try {
             FileOutputStream fos = new FileOutputStream(new File(getContext().getFilesDir(), "Carrito.txt"));
