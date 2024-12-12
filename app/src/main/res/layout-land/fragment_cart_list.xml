@@ -44,7 +44,7 @@ android:layout_height="match_parent">
         android:padding="8dp"
         app:layout_constraintTop_toBottomOf="@id/appBarLayout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/CompraCarrito"
         android:scrollbars="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:layout_editor_absoluteX="30dp"
@@ -52,6 +52,19 @@ android:layout_height="match_parent">
 
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"/>
+    <Button
+        android:id="@+id/CompraCarrito"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:backgroundTint="#0056A6"
+        android:textColor="#FFFFFF"
+        android:text="Comprar todo"
+        android:textSize="18sp"
+        android:padding="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:layout_width="match_parent"
@@ -61,7 +74,7 @@ android:layout_height="match_parent">
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="167dp"
+        tools:layout_editor_absoluteY="180dp"
         android:textSize="40dp"
         android:text="No hay juegos en el carrito"
         android:textAlignment="center"

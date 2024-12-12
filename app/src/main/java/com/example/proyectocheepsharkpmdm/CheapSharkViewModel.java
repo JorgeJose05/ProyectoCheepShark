@@ -34,7 +34,7 @@ public class CheapSharkViewModel extends AndroidViewModel {
     }
 
     /**
-     * Método para buscar tratos en la API de CheapShark.
+     * Método para buscar tratos en la API de CheapShark. devuelve la lista con todos los juegos
      * @param storeID ID de la tienda (por ejemplo, "1" para Steam).
      * @param upperPrice Precio máximo de las ofertas.
      */

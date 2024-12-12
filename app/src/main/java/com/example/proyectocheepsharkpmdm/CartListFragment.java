@@ -46,6 +46,8 @@ public class CartListFragment extends Fragment {
     NavController navController;
     TextView nojuegos;
     List<String> cartGameIds = new ArrayList<>();
+    Button comprarTodo;
+
 
     ImageButton carritoButton;
 
@@ -55,6 +57,22 @@ public class CartListFragment extends Fragment {
     public CartListFragment() {
         // Required empty public constructor
     }
+    private void updateCartUI(List<CheapShark.Deal> dealsList) {
+        double totalPrice = dealsList.stream()
+                .mapToDouble(deal -> Double.parseDouble(deal.salePrice))
+                .sum();
+
+        comprarTodo.setText(String.format("%.2f€ en total", totalPrice));
+
+        if (dealsList.isEmpty()) {
+            nojuegos.setVisibility(View.VISIBLE);
+            comprarTodo.setVisibility(View.INVISIBLE);
+        } else {
+            nojuegos.setVisibility(View.INVISIBLE);
+            comprarTodo.setVisibility(View.VISIBLE);
+        }
+    }
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -66,6 +84,7 @@ public class CartListFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        comprarTodo = view.findViewById(R.id.CompraCarrito);
         carritoButton = view.findViewById(R.id.carritoButton);
         nojuegos = view.findViewById(R.id.NoJuegos);
         button = view.findViewById(R.id.button);
@@ -103,15 +122,42 @@ public class CartListFragment extends Fragment {
                 // Aquí filtras o ajustas la lista para mostrar solo los elementos del carrito
                 dealsAdapter.setDealsList(filteredDeals);
 
+
+                comprarTodo.setText((String.format("%.2f€ en total", filteredDeals.stream().mapToDouble(f -> Double.parseDouble(f.salePrice)).sum())));
+
+                updateCartUI(filteredDeals);
+
                 if (filteredDeals.isEmpty()){
                     nojuegos.setVisibility(View.VISIBLE);
+                    comprarTodo.setVisibility(View.INVISIBLE);
                 }else{
                     nojuegos.setVisibility(View.INVISIBLE);
+                    comprarTodo.setVisibility(View.VISIBLE);
                 }
 
             }
         });
 
+        comprarTodo.setOnClickListener(view1 -> {
+            // Limpiar la lista de IDs del carrito
+            cartGameIds.clear();
+
+            // Guardar los cambios en el archivo local
+            saveCartGameIds();
+
+            // Limpiar la lista del adaptador y notificar los cambios
+            dealsAdapter.setDealsList(new ArrayList<>());
+
+
+
+            // Actualizar la visibilidad de los elementos
+            nojuegos.setVisibility(View.VISIBLE);
+            comprarTodo.setVisibility(View.INVISIBLE);
+
+            // Actualizar la UI del carrito después de vaciarlo
+            updateCartUI(new ArrayList<>());
+
+        });
 
 
         // Opcional: Si es necesario, realiza una nueva solicitud para datos específicos
@@ -234,9 +280,17 @@ public class CartListFragment extends Fragment {
                 notifyItemRemoved(position);
                 notifyItemRangeChanged(position, dealsList.size());
 
+
+                // Actualizar la UI del carrito después de eliminar el juego
+                updateCartUI(dealsList);
+
                 if (dealsList.isEmpty()) {
                     nojuegos.setVisibility(View.VISIBLE);  // Mostrar mensaje si el carrito está vacío
+                    comprarTodo.setVisibility(View.INVISIBLE);
                 }
+
+
+
             });
 
             holder.binding.getRoot().setOnClickListener(v -> {
@@ -266,6 +320,10 @@ public class CartListFragment extends Fragment {
         public int getItemCount() {
             return dealsList == null ? 0 : dealsList.size();
         }
+
+
+
+
 
         /**
          * El metodo que inicializa la deal list con la de la api
